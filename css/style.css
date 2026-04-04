@@ -72,3 +72,77 @@ h1::after {
 	max-width: 800px;
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
+
+.generate-btn {
+	background: linear-gradient(45deg, #667eea, #764ba2);
+	border: none;
+	border-radius: 50px;
+	color: white;
+	font-size: 1rem;
+	font-weight: 500;
+	margin-bottom: 2rem;
+	padding: 0.8rem 1.5rem;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		box-shadow: 0 6px 10px rgba(102, 126, 234, 0.3);
+		transform: translateY(-2px);
+	}
+	&:focus-visible {
+		outline: 3px solid #667eea;
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+}
+
+.palette-container {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.color-box {
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transition: transform 0.2s;
+
+	&:hover {
+		transform: translateY(-5px);
+	}
+}
+.color {
+	height: 120px;
+	cursor: pointer;
+}
+.color-info {
+	background-color: #fff;
+	font-size: 0.9rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.7rem;
+}
+.hex-value {
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
+.copy-btn {
+	color: #64748b;
+	transition: color 0.2s;
+	cursor: pointer;
+
+	&:hover {
+		color: #667eea;
+	}
+}
+
+@media (max-width: 768px) {
+	.palette-container {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	}
+}
