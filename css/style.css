@@ -140,6 +140,9 @@ h1::after {
 		color: #667eea;
 	}
 }
+.copy-success {
+	color: #48bb78;
+}
 
 @media (max-width: 768px) {
 	.palette-container {

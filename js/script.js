@@ -24,9 +24,7 @@ paletteContainer.addEventListener("click", function (e) {
 
 function showCopySuccess(element) {
     element.classList.remove("far", "fa-copy");
-    element.classList.add("fas", "fa-check");
-    
-    element.style.color = "#48bb78";
+    element.classList.add("fas", "fa-check", "copy-success");
     
     setTimeout(() => {
         element.classList.remove("fas", "fa-check");
@@ -69,4 +67,4 @@ function updatePaletteDisplay(colors) {
 }
 
 // GENERATE PALETTE ON PAGE REFRESH
-generatePalette();
+// generatePalette();
