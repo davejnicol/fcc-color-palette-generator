@@ -13,11 +13,11 @@ paletteContainer.addEventListener("click", function (e) {
             .then(() => showCopySuccess(e.target))
             .catch((err) => console.log(err));
     } else if (e.target.classList.contains("color")) {
-        const hexValue = e.target.nextElementSibling.querySelector(".hex-value").textContent;
+        const hexValue = e.target.querySelector(".hex-value").textContent;
 
         navigator.clipboard
             .writeText(hexValue)
-            .then(() => showCopySuccess(e.target.nextElementSibling.querySelector(".copy-btn")))
+            .then(() => showCopySuccess(e.target.querySelector(".copy-btn")))
             .catch((err) => console.log(err));
     } 
 });
@@ -60,11 +60,31 @@ function updatePaletteDisplay(colors) {
         const color = colors[index];
         const colorDiv = colorBoxes.querySelector(".color");
         const hexValue = colorBoxes.querySelector(".hex-value");
+        const colorInfo = colorBoxes.querySelector(".color-info");
 
+        // Set the background
         colorDiv.style.backgroundColor = color;
+
+        console.log(colorDiv.style.backgroundColor);
+
+        // Get the computed RGB string and extract numbers
+        const rgbString = window.getComputedStyle(colorDiv).backgroundColor;
+        const rgbValues = rgbString.match(/\d+/g).map(Number);
+        const [r, g, b] = rgbValues;
+
+        console.log([r])
+
+        // CalCalculate brightness (YIQ formula)
+        const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        
+        // Set text color based on brightness threshold (128)
+        colorInfo.style.color = (brightness < 128)
+            ? "hsl(0 0% 95%)"   // Light text for dark backgrounds
+            : "hsl(0 0% 7.5%)"; // Dark text for light backgrounds
+        
         hexValue.textContent = color;
     });
 }
 
 // GENERATE PALETTE ON PAGE REFRESH
-// generatePalette();
+generatePalette();
