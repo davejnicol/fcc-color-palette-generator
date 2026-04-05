@@ -65,16 +65,12 @@ function updatePaletteDisplay(colors) {
         // Set the background
         colorDiv.style.backgroundColor = color;
 
-        console.log(colorDiv.style.backgroundColor);
-
         // Get the computed RGB string and extract numbers
         const rgbString = window.getComputedStyle(colorDiv).backgroundColor;
         const rgbValues = rgbString.match(/\d+/g).map(Number);
         const [r, g, b] = rgbValues;
 
-        console.log([r])
-
-        // CalCalculate brightness (YIQ formula)
+       // CalCalculate brightness (YIQ formula)
         const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
         
         // Set text color based on brightness threshold (128)
