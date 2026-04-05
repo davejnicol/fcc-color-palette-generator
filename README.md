@@ -8,6 +8,7 @@ This is a random Color Palette Generator project using HTML, CSS, and JS.
     - [Table of contents](#table-of-contents)
     - [Overview](#overview)
         - [The challenge](#the-challenge)
+            - [To Do](#to-do)
         - [Screenshot](#screenshot)
     - [My process](#my-process)
         - [Built with](#built-with)
@@ -16,6 +17,14 @@ This is a random Color Palette Generator project using HTML, CSS, and JS.
 ## Overview
 
 ### The challenge
+
+The challenge was to change the original layout from small cards to displaying the colors in a container that spans the majority of the screen. Also, wanted to include a theme switcher from light to dark mode.
+
+#### To Do
+
+- Add closest color name
+- Add switch to toggle between HEX, RGB, and HSL values
+- More functionality (ie. ability to lock/unlock colors)
 
 ### Screenshots
 
@@ -40,6 +49,8 @@ Version 2 Responsive
 ### Built with
 
 - Semantic HTML5 markup
+- CSS custom properties
+- CSS Grid & Flex
 - Javascript
 
 ## Author
