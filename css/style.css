@@ -1,6 +1,6 @@
 :root {
 	/* Change these values, as required */
-	--clr-white: hsl(0 0% 100%);
+	/* --clr-white: hsl(0 0% 100%); */
 	--clr-neutral-100: hsl(0 0% 95%);
 	--clr-neutral-400: hsl(0 0% 60%);
 	--clr-neutral-800: hsl(0 0% 17.5%);
@@ -14,11 +14,24 @@
 	--clr-blue-800: hsl(215 70% 17.5%);
 	--clr-blue-900: hsl(215, 70%, 7.5%);
 
+	/* --clr-orange-100: hsl(33, 96%, 95%); */
+	--clr-orange-200: hsl(33, 96%, 82.5%);
+	--clr-orange-400: hsl(33, 96%, 60%);
+	--clr-orange-500: hsl(33, 96%, 50%);
+	--clr-orange-600: hsl(33, 96%, 40%);
+	--clr-orange-800: hsl(33 96% 17.5%);
+	/* --clr-orange-900: hsl(33, 96%, 7.5%); */
+
+	/* --clr-lime-200: hsl(144 75% 82.5%); */
+	--clr-lime-700: hsl(144 75% 30%);
+
 	--ff-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 	--fs-reg: 1rem;
 	--fs-large: 1.65rem;
+	--fw-500: 500;
 	--fw-700: 700;
 
+	--size-1: 0.375rem;
 	--size-2: 0.5rem;
 	/* --size-3: 0.75rem; */
 	--size-4: 1rem;
@@ -30,18 +43,27 @@
 	--bg-primary-light: var(--clr-blue-100);
 	--bg-secondary-light: var(--clr-blue-200);
 	--border-light: var(--clr-neutral-400);
+	--box-shadow-light: var(--clr-orange-800);
+	--button-light: var(--clr-orange-400);
+	--button-hover-light: var(--clr-orange-500);
 	--text-primary-light: var(--clr-neutral-900);
 
 	/* For Dark Theme */
 	--bg-primary-dark: var(--clr-blue-900);
 	--bg-secondary-dark: var(--clr-blue-800);
 	--border-dark: var(--clr-neutral-400);
+	--box-shadow-dark: var(--clr-orange-200);
+	--button-dark: var(--clr-orange-500);
+	--button-hover-dark: var(--clr-orange-400);
 	--text-primary-dark: var(--clr-neutral-100);
 
 	color-scheme: light;
 	--background: light-dark(var(--bg-primary-light), var(--bg-primary-dark));
 	--background-2: light-dark(var(--bg-secondary-light), var(--bg-secondary-dark));
 	--border: light-dark(var(--border-light), var(--border-dark));
+	--box-shadow: light-dark(var(--box-shadow-light), var(--box-shadow-dark));
+	--button: light-dark(var(--button-light), var(--button-dark));
+	--button-hover: light-dark(var(--button-hover-light), var(--button-hover-dark));
 	--color: light-dark(var(--text-primary-light), var(--text-primary-dark));
 }
 [data-theme="light"] {
@@ -80,8 +102,19 @@ body {
 	line-height: 1.4;
 
 	display: grid;
-	grid-template-rows: auto 1fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas: "header" "main" "footer";
 	min-block-size: 100svh;
+	align-items: stretch;
+}
+header {
+	grid-area: "header";
+}
+main {
+	grid-area: "main";
+}
+footer {
+	grid-area: "footer";
 }
 h1,
 h2 {
@@ -117,90 +150,117 @@ header {
 }
 
 .generate-btn {
-	/* background: linear-gradient(45deg, #667eea, #764ba2); */
+	background-color: var(--button);
 	border: none;
-	/* border-radius: 50px; */
-	/* color: white; */
-	/* font-size: 1rem; */
-	/* font-weight: 500; */
-	/* margin-bottom: 2rem; */
-	/* padding: 0.8rem 1.5rem; */
-	/* cursor: pointer; */
+	border-radius: var(--size-2);
+	color: contrast-color(var(--button));
+	font-size: var(--fs-reg);
+	font-weight: var(--fw-500);
+	padding: var(--size-2) var(--size-4);
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	gap: var(--size-1);
 
 	&:hover,
 	&:focus-visible {
-		/* box-shadow: 0 6px 10px rgba(102, 126, 234, 0.3); */
-		/* transform: translateY(-2px); */
+		background-color: var(--button-hover);
+		box-shadow: 0 4px 10px rgba(from var(--box-shadow) r g b / 0.2);
 	}
 	&:focus-visible {
-		/* outline: 3px solid #667eea; */
+		outline: 2px solid var(--button);
 	}
 
-	&:active {
-		/* transform: translateY(0); */
+	& svg {
+		stroke: contrast-color(var(--button));
+		transition: transform 0.3s ease;
 	}
+	&:hover svg,
+	&:focus-visible svg {
+		transform: rotate(90deg);
+	}
+}
+
+/* FOOTER STYLES */
+footer {
+	border-top: 1px solid var(--border);
+	padding: var(--size-2) var(--size-4);
 }
 
 /* MAIN STYLES */
-.container {
-	/* background-color: #fff; */
-	/* border-radius: 1rem; */
-	/* padding: var(--size-8); */
-	/* width: 100%; */
-	/* max-width: 800px; */
-	/* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); */
-}
-
 .palette-container {
-	/* display: grid; */
-	/* gap: 1rem; */
-	/* grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); */
+	display: grid;
+	grid-auto-flow: row;
+	height: 100%;
+}
+@media (min-width: 768px) {
+	.palette-container {
+		grid-auto-flow: column;
+	}
 }
 
 .color-box {
-	/* border-radius: 10px; */
-	/* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); */
-	/* overflow: hidden; */
-	/* transition: transform 0.2s; */
-
-	&:hover {
-		/* transform: translateY(-5px); */
+	&:hover .color-info {
+		transform: scale(1);
+		opacity: 1;
 	}
 }
 .color {
-	/* height: 120px; */
-	/* cursor: pointer; */
+	display: flex;
+	align-items: end;
+	justify-content: center;
+	min-height: 100%;
+	cursor: pointer;
 }
 .color-info {
-	/* background-color: #fff; */
-	/* font-size: 0.9rem; */
+	text-align: center;
+	display: flex;
+	gap: var(--size-2);
+	align-items: flex-start;
+	justify-content: center;
+	min-width: 100%;
 
-	/* display: flex; */
-	/* align-items: center; */
-	/* justify-content: space-between; */
-	/* padding: 0.7rem; */
+	opacity: 0.7;
+	transform: scale(0.8);
+	padding-block: var(--size-8);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
 }
 .hex-value {
-	/* font-weight: 500; */
-	/* letter-spacing: 0.5px; */
+	font-weight: var(--fw-500);
+	letter-spacing: 1px;
+	cursor: pointer;
+
+	&:hover + .copy-btn {
+		opacity: 1;
+	}
 }
 .copy-btn {
-	/* color: #64748b; */
-	/* transition: color 0.2s; */
-	/* cursor: pointer; */
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: currentColor;
+	-webkit-mask: url("../img/copy.svg") no-repeat center;
+	mask: url("../img/copy.svg") no-repeat center;
+	-webkit-mask-size: contain;
+	mask-size: contain;
 
-	&:hover {
-		/* color: #667eea; */
-	}
+	cursor: pointer;
 }
+
 .copy-success {
-	/* color: #48bb78; */
-}
-
-@media (max-width: 768px) {
-	.palette-container {
-		/* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-	}
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: currentColor;
+	-webkit-mask: url("../img/checky.svg") no-repeat center;
+	mask: url("../img/check.svg") no-repeat center;
+	-webkit-mask-size: contain;
+	mask-size: contain;
 }
 
 /* THEME TOGGLE STYLING */

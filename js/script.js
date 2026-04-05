@@ -8,9 +8,17 @@ paletteContainer.addEventListener("click", function (e) {
     if (e.target.classList.contains("copy-btn")) {
         const hexValue = e.target.previousElementSibling.textContent;
 
-        navigator.clipboard
+       navigator.clipboard
             .writeText(hexValue)
             .then(() => showCopySuccess(e.target))
+            .catch((err) => console.log(err));
+
+    } else if (e.target.classList.contains("hex-value")) {
+        const hexValue = e.target.textContent;
+        
+        navigator.clipboard
+            .writeText(hexValue)
+            .then(() => showCopySuccess(e.target.nextElementSibling))
             .catch((err) => console.log(err));
     } else if (e.target.classList.contains("color")) {
         const hexValue = e.target.querySelector(".hex-value").textContent;
@@ -23,12 +31,12 @@ paletteContainer.addEventListener("click", function (e) {
 });
 
 function showCopySuccess(element) {
-    element.classList.remove("far", "fa-copy");
-    element.classList.add("fas", "fa-check", "copy-success");
+    element.classList.remove("copy-btn");
+    element.classList.add("copy-success");
     
     setTimeout(() => {
-        element.classList.remove("fas", "fa-check");
-        element.classList.add("far", "fa-copy");
+        element.classList.remove("copy-success");
+        element.classList.add("copy-btn");
         element.style.color = "";
     }, 1500);
 }
