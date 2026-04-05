@@ -21,7 +21,19 @@ This is a random Color Palette Generator project using HTML, CSS, and JS.
 
 Original Design & Layout
 
-![](./design/color-palette-generator-v1.png)
+![](./design/color-palette-gen-v1.png)
+
+Version 2 Design & Layout
+
+![](./design/color-palette-gen-v2.png)
+
+Version 2 Dark Mode
+
+![](./design/color-palette-gen-v2-dark.png)
+
+Version 2 Responsive
+
+![](./design/color-palette-gen-v2-mobile.png)
 
 ## My process
 
