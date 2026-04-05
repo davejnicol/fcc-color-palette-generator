@@ -18,7 +18,9 @@ This is a random Color Palette Generator project using HTML, CSS, and JS.
 
 ### The challenge
 
-The challenge was to change the original layout from small cards to displaying the colors in a container that spans the majority of the screen. Also, wanted to include a theme switcher from light to dark mode.
+This project involved redesigning the UI from small cards to a spacious, immersive container layout while ensuring high accessibility. Key features include dynamic text color adjustment using brightness formulas for optimal readability and a robust theme switcher for light/dark modes.
+
+The key technical challenges were the layout shift; dynamic readability; and theme integration. With the **layout shift**, the project was migrated from a compact grid to a fluid container spanning the viewport, improving visual focus on color data. To implement the **dynamic readability**, a luminosity/brightness formula is used to calculate whether text should be black or white based on the background color. And the final challenge was the addition of **theme integration**, adding light/dark mode support, ensuring optimal contrast ratios across themes.
 
 #### To Do
 
