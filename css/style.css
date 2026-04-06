@@ -52,7 +52,7 @@
 	--button-hover-dark: var(--clr-orange-400);
 	--text-primary-dark: var(--clr-neutral-100);
 
-	color-scheme: light;
+	color-scheme: light dark;
 	--background: light-dark(var(--bg-primary-light), var(--bg-primary-dark));
 	--background-2: light-dark(var(--bg-secondary-light), var(--bg-secondary-dark));
 	--border: light-dark(var(--border-light), var(--border-dark));
