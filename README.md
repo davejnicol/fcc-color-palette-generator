@@ -9,7 +9,7 @@ This is a random Color Palette Generator project using HTML, CSS, and JS.
     - [Overview](#overview)
         - [The challenge](#the-challenge)
             - [To Do](#to-do)
-        - [Screenshot](#screenshot)
+        - [Screenshots](#screenshots)
     - [My process](#my-process)
         - [Built with](#built-with)
     - [Author](#author)
